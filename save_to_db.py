@@ -32,7 +32,7 @@ try:
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        password="rp!1128",
+        password="******",
         database="mqtt"
     )
     #print(mydb)
