@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 # use this script to get a tag cloud picture of all PDF files stored in a given folder
 # usage: ./script folder
+# you may need these 2 modules: pyPDF2 and worcloud
+# pip intall pyPDF2
+# pip install worcloud
 
 # importing all required modules
 import PyPDF2
