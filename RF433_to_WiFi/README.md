@@ -67,10 +67,10 @@ Loop:
 ## VERSION 2 
 ### [esp8266_trans_receiv2.ino](esp8266_trans_receiv2.ino)
 ### Objective: PoC of sending and receiving RF433 codes via MQTT, using a simple MQTT app
-* read RF433 codes and send to MQTT broker
-* listen for MQTT published to it and sends the RF433
+* reads RF433 codes and sends to MQTT broker
+* listens for MQTT published to  and sends the RF433
 * broker is a Raspberry 4 running Mosquitto with exposed default port
-* ESP8266 connectes to WiFi
+* ESP8266 connects to WiFi
 * To be improved:
   - security: none. Any code sent to the ESP will be relayed. All codes sent to the broker are in plaintext. The broker has no way to confirm who is the sender. The ESP has no way to confirm wh sent the codes.
   - hardcoded WiFi SSID
@@ -83,23 +83,50 @@ Loop:
 ### How does it work:
  0. setup
   - imports RCSwitch.h, a library to manage these RF433 devices
+  - imports ESP8266WiFi.h, a library to handle WiFi for ESP8266
+  - imports PubSubClient.h, a library to manage MQTT 
+  - imports time.h, a library to work with RTP
   - defines the optional parameters of the RCSwitch, which I left as default:
     -   setPulseLength
     -   setProtocol (1)
     -   setRepeatTransmit
   - defines the tx and rx pins in the ESP
   - defines the internal led as output
+  - defines the parameters of the MQTT server:
+    -   port (1883)
+    -   user (null)
+    -   password (null)
+    -   publish topic: home/rf433_1_tx
+    -   receiving topic:  home/rf433_1_rx
+  - initializes the code received by the ESP (so that it can know when some new code was received)
+
+Setup WiFi void setup_wifi():
+* small delay after start, to connect to WiFi
+* connects to WiFi and prints the IP to the serial printer
+* gets the time from the NTP servers
+
+Connect to MQTT reconnect() :
+* if not connected:
+  - when connected sends an annoucement via MQTT
+  - subscribe to the receiving topic
+
 
 Loop:
 
  1. disables internal led
- 2. listens, function void receive_433()
+ 2. connects to WiFi or 
+ 3. listens, function: void receive_433()
     - if it receives data, turns on the internal led
     - prints to the serial port the received code, bit lenght and protocol, e.g.:
     ```11:23:19.634 -> mySwitch.available Received 16729428 / 24bit Protocol: 1```
- 3. sends, function void transmit_433(int code)
-    - from time to time sends code vi RF433
-    - ```code1 = 1234;```
-    - ```mySwitch.send(code, 24);```
-    - prints to the serial port the sent code
-    - turns on the internal led
+    - some complicated conversion of data is needed, but may be simplified on a later version
+    - sends vi MQTT: publishSerialData(char *serialData)
+      - reconnects if needed, function reconnect()
+      - sends the code, received via RF, to the MQTT broker
+ 4. sends:
+    - if the data received from MQTT is different from the initialization,
+    - send via the function: void transmit_433(int code)
+      - ```code1 = 1234;```
+      - ```mySwitch.send(code, 24);```
+      - prints to the serial port the sent code
+      - turns on the internal led
