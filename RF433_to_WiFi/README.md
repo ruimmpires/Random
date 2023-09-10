@@ -51,6 +51,6 @@ Loop:
  2. listens, function receive_433()
     - if it receives data, turns on the internal led
     - prints to the serial port the received value, bit lenght and protocol, e.g.:
-    '''11:23:19.634 -> mySwitch.available Received 16729428 / 24bit Protocol: 1'''
+    ```11:23:19.634 -> mySwitch.available Received 16729428 / 24bit Protocol: 1```
 
  4. sends 
