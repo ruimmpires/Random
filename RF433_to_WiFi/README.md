@@ -81,7 +81,7 @@ Loop:
   - distance of sending and receiving. The current monopole antennas seem to have a very short reach
   - how to read the RF433 commands I currently have?
 ### How does it work:
- 0. setup
+Boot:
   - imports RCSwitch.h, a library to manage these RF433 devices
   - imports ESP8266WiFi.h, a library to handle WiFi for ESP8266
   - imports PubSubClient.h, a library to manage MQTT 
@@ -90,7 +90,6 @@ Loop:
     -   setPulseLength
     -   setProtocol (1)
     -   setRepeatTransmit
-  - defines the tx and rx pins in the ESP
   - defines the internal led as output
   - defines the parameters of the MQTT server:
     -   port (1883)
@@ -100,20 +99,35 @@ Loop:
     -   receiving topic:  home/rf433_1_rx
   - initializes the code received by the ESP (so that it can know when some new code was received)
 
-Setup WiFi void setup_wifi():
+Setup:
+  - defines serial port baud rate
+  - defines the tx and rx pins in the ESP
+  - small delay after start, to connect to WiFi
+  - sets up WiFi with setup_wifi()
+  - ...
+  - connects to MQTT with function reconnect()
+  
+Setup WiFi: void setup_wifi()
 * small delay after start, to connect to WiFi
 * connects to WiFi and prints the IP to the serial printer
 * gets the time from the NTP servers
 
-Connect to MQTT reconnect() :
+Connect to MQTT: void reconnect()
 * if not connected:
   - when connected sends an annoucement via MQTT
   - subscribe to the receiving topic
 
+Connect to MQTT: void calback()
+* prints to serial the data received from the broker
+* converts this data to a number that will be sent to RF
+
+Function publish: void publishSerialData(char *serialData)
+* if not connect, reconnect with function reconnect()
+* published the data to the MQTT broker
 
 Loop:
 
- 1. disables internal led
+ 1. turns off the internal led
  2. connects to WiFi or 
  3. listens, function: void receive_433()
     - if it receives data, turns on the internal led
@@ -122,11 +136,10 @@ Loop:
     - some complicated conversion of data is needed, but may be simplified on a later version
     - sends vi MQTT: publishSerialData(char *serialData)
       - reconnects if needed, function reconnect()
-      - sends the code, received via RF, to the MQTT broker
+      - sends the code, received via RF, to the MQTT broker with function publishSerialData
  4. sends:
     - if the data received from MQTT is different from the initialization,
     - send via the function: void transmit_433(int code)
-      - ```code1 = 1234;```
       - ```mySwitch.send(code, 24);```
       - prints to the serial port the sent code
       - turns on the internal led
