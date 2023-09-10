@@ -34,5 +34,16 @@ Quite simply power the devices as described in the components. I've used the 3.3
 
 ## VERSION 1 
 * [esp8266_trans_receiv1.ino](esp8266_trans_receiv1.ino)
-* * Objective: PoC of sending and receiving RF433 codes
-* Details
+* Objective: PoC of sending and receiving RF433 codes
+* How does it work:
+ 0. setup
+  - imports RCSwitch.h, a library to manage these RF433 devices
+  - defines the optional parameters of the RCSwitch, which a left as default
+    -   setPulseLength
+    -   setProtocol (1)
+    -   setRepeatTransmit
+  - defines the tx and rx pins in the ESP
+  - defines the internal led as output
+ 1. disables internal led
+ 2. listens
+ 3. sends 
