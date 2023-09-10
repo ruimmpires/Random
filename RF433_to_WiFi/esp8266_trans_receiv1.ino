@@ -36,19 +36,12 @@ all 5 bits 00000
 tristate info
 https://sui77.wordpress.com/2011/04/12/163/
 
-botao ewelink  14557224 / 24bit Protocol: 1   abrir portao rua
-11-01-11-10-00-10-00-00-00-10-1000
-
-
 Comando COATI
 21 / 24bit Protocol: 1
 16404 / 24bit Protocol: 1
-61653 / 24bit Protocol: 1    4117   28885        abrir portao rua
+61653 / 24bit Protocol: 1 
 20501 / 24bit Protocol: 1
 20500 / 24bit Protocol: 1
-
-
-vizinho 16777215 / 24bit Protocol: 6
 
 
 */
@@ -92,56 +85,6 @@ void transmit_433(int code){
     Serial.println(code);
     mySwitch.send(code, 24);
     digitalWrite(2, LOW);   // Turn the LED on by making the voltage LOW
-    /*Serial.println("clone de comando ewelink 61653 que devera abrir o portao");
-    mySwitch.send(61653, 24);
-    delay(1000);
-    Serial.println("clone de comando ewelink 4117 que devera abrir o portao");
-    mySwitch.send(4117, 24);
-    delay(1000);
-    Serial.println("clone de comando ewelink 28885 que devera abrir o portao");
-    mySwitch.send(28885, 24);
-    delay(1000);*/
-    /*
-    Serial.println("Sending ON");
-    Serial.println("A ON 111111111100010101010100");
-    mySwitch.send(16762196, 24);
-    delay(2000);
-    Serial.println("B ON 111111111101000101010100");
-    mySwitch.send(16765268, 24);
-    delay(2000);
-    Serial.println("C ON 111111111101010001010100");
-    mySwitch.send(16766036, 24);
-    delay(2000);
-    Serial.println("D ON 111111111101010100010100");
-    mySwitch.send(16766228, 24);
-    delay(2000);
-    digitalWrite(LED_BUILTIN,HIGH);
-    /*mySwitch.sendTriState("11111FFF0FF0");
-    mySwitch.switchOn(1, 1); 
-    mySwitch.switchOn(2, 1); 
-    mySwitch.switchOn(3, 1); 
-    mySwitch.switchOn(4, 1); */
-    
-    /*
-    Serial.println("Sending OFF");
-    Serial.println("A OFF 111111111100010101010001");
-    mySwitch.send(16762193, 24);
-    delay(2000);
-    Serial.println("B OFF 111111111101000101010001");
-    mySwitch.send(16765265, 24);
-    delay(2000);
-    Serial.println("C OFF 111111111101010001010001");
-    mySwitch.send(16766033, 24);
-    delay(2000);
-    Serial.println("D OFF 111111111101010100010001");
-    mySwitch.send(16766225, 24);
-    delay(2000);
-    digitalWrite(LED_BUILTIN,LOW);
-    /*mySwitch.sendTriState("11111FFF0F0F");
-    mySwitch.switchOff(1, 1);
-    mySwitch.switchOff(2, 1);
-    mySwitch.switchOff(3, 1);
-    mySwitch.switchOff(4, 1);*/
 }
 
 void receive_433(){
@@ -174,21 +117,11 @@ void receive_433(){
 void loop() {
   digitalWrite(2, HIGH);  // Turn the LED off by making the voltage HIGH
   receive_433();
-  //delay(100);            // Wait a bit
+  delay(100);            // Wait a bit
   
-  /*for (int codetx = 0; codetx <= 16777215 ; codetx++) {
+  for (int codetx = 0; codetx <= 16777215 ; codetx++) {
     transmit_433(codetx);
     delay(100);            // Wait a bit
     digitalWrite(2, HIGH);  // Turn the LED off by making the voltage HIGH
-  }*/
-  /*if(millis() >= time_now + period){
-        time_now += period;
-        //receive_433();
-        i++;
-        if (i>TimeOut){
-          code1 = 1234;
-          transmit_433(code1);
-          i=0;
-        }
-    }*/
+  }
 }
