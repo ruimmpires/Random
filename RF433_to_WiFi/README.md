@@ -33,7 +33,7 @@ I've used an ESP8266.
 Quite simply power the devices as described in the components. I've used the 3.3v successfully but also the Vin. (5V). The data imput can be connected to where you configure the ESP. In this case:
 * RX - D2
 * TX - D3
-![pic](esp8266_trans_receiv2.jpg)
+![pic](esp8266_trans_receiv22.jpg)
   
 ### MQTT
 ...on going
