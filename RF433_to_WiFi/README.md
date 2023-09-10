@@ -146,6 +146,7 @@ Loop:
       - prints to the serial port the sent code
       - turns on the internal led
 ###MQTT DASH APP in Android
-In the android app, MQTT dash, or other compatible, add the broker IP, and configure a dashboard with the publish and subscribe topics such as in the picture
+In the android app, MQTT dash, or other compatible, add the broker IP, and configure a dashboard with the publish and subscribe topics such as in the picture, in the bootom righ corner:
 
 ![pic](mqtt_dash.png)
+In this dashboard I can see the latest code received and can also send codes. When sending a code previously programmed in my automatic gate, it operated as expected.
