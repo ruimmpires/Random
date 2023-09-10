@@ -13,11 +13,14 @@ Sources and ideas:
 * https://lastminuteengineers.com/433mhz-rf-wireless-arduino-tutorial
 * https://github.com/sui77/rc-switch
 * https://www.espboards.dev/blog/esp32-433-rmt-ev1527/
-
+* http://www.steves-internet-guide.com/mqtt-basics-course/
+* https://randomnerdtutorials.com/how-to-install-mosquitto-broker-on-raspberry-pi/
 
 ## Background info
 ### RF433
+...on going
 ### RF433 ASK
+...on going
 ### RF433 HW devices
 The TX/RX devices are quite cheap and usually come in a bundle of 2. I've used the receiver XLC-RF-5V and the sender XKFST, as in the picture
 
@@ -30,11 +33,53 @@ I've used an ESP8266.
 Quite simply power the devices as described in the components. I've used the 3.3v successfully but also the Vin. (5V). The data imput can be connected to where you configure the ESP. In this case:
 * RX - D2
 * TX - D3
-
+### MQTT
+...on going
 
 ## VERSION 1 
 ### [esp8266_trans_receiv1.ino](esp8266_trans_receiv1.ino)
 ### Objective: PoC of sending and receiving RF433 codes
+### How does it work:
+ 0. setup
+  - imports RCSwitch.h, a library to manage these RF433 devices
+  - defines the optional parameters of the RCSwitch, which I left as default:
+    -   setPulseLength
+    -   setProtocol (1)
+    -   setRepeatTransmit
+  - defines the tx and rx pins in the ESP
+  - defines the internal led as output
+
+Loop:
+
+ 1. disables internal led
+ 2. listens, function void receive_433()
+    - if it receives data, turns on the internal led
+    - prints to the serial port the received code, bit lenght and protocol, e.g.:
+    ```11:23:19.634 -> mySwitch.available Received 16729428 / 24bit Protocol: 1```
+ 3. sends, function void transmit_433(int code)
+    - from time to time sends code vi RF433
+    - ```code1 = 1234;```
+    - ```mySwitch.send(code, 24);```
+    - prints to the serial port the sent code
+    - turns on the internal led
+   
+
+## VERSION 2 
+### [esp8266_trans_receiv2.ino](esp8266_trans_receiv2.ino)
+### Objective: PoC of sending and receiving RF433 codes via MQTT, using a simple MQTT app
+* read RF433 codes and send to MQTT broker
+* listen for MQTT published to it and sends the RF433
+* broker is a Raspberry 4 running Mosquitto with exposed default port
+* ESP8266 connectes to WiFi
+* To be improved:
+  - security: none. Any code sent to the ESP will be relayed. All codes sent to the broker are in plaintext. The broker has no way to confirm who is the sender. The ESP has no way to confirm wh sent the codes.
+  - hardcoded WiFi SSID
+  - hardcoded SSID password
+  - hardcoded MQTT broker IP
+  - keep alive of ESP. How to monitor?
+  - resilency of ESP. How to improve?
+  - distance of sending and receiving. The current monopole antennas seem to have a very short reach
+  - how to read the RF433 commands I currently have?
 ### How does it work:
  0. setup
   - imports RCSwitch.h, a library to manage these RF433 devices
