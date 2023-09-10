@@ -33,9 +33,9 @@ Quite simply power the devices as described in the components. I've used the 3.3
 
 
 ## VERSION 1 
-* [esp8266_trans_receiv1.ino](esp8266_trans_receiv1.ino)
-* Objective: PoC of sending and receiving RF433 codes
-* How does it work:
+### [esp8266_trans_receiv1.ino](esp8266_trans_receiv1.ino)
+### Objective: PoC of sending and receiving RF433 codes
+### How does it work:
  0. setup
   - imports RCSwitch.h, a library to manage these RF433 devices
   - defines the optional parameters of the RCSwitch, which I left as default:
@@ -48,9 +48,13 @@ Quite simply power the devices as described in the components. I've used the 3.3
 Loop:
 
  1. disables internal led
- 2. listens, function receive_433()
+ 2. listens, function void receive_433()
     - if it receives data, turns on the internal led
-    - prints to the serial port the received value, bit lenght and protocol, e.g.:
+    - prints to the serial port the received code, bit lenght and protocol, e.g.:
     ```11:23:19.634 -> mySwitch.available Received 16729428 / 24bit Protocol: 1```
-
- 4. sends 
+ 3. sends, function void transmit_433(int code)
+    - from time to time sends code vi RF433
+    - ```code1 = 1234;```
+    - ```mySwitch.send(code, 24);```
+    - prints to the serial port the sent code
+    - turns on the internal led
