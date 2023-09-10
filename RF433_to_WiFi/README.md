@@ -29,10 +29,12 @@ The TX/RX devices are quite cheap and usually come in a bundle of 2. I've used t
 A 433MHz wave has a wavelength of about 69cm. This is calculated from wavelenght = c / freq. You may try to use a simple wire straight up which is a standard monopole antenna. The best lenght to achieve some resonant will be wavelenght/4. So, you may use a sinlge wire of 17.3cm. I've tried the "433MHz air cooled antenna" but I haven't confirmed any improvements. It may be that I haven't used the right cable width or something else, so I reverted to the basic monopole. The reception of my own transmitter seems to do not go above 1m, but I managed to control some devices at around 10m. So am still not sure whats going on.
 ### Arduino HW devices
 I've used an ESP8266.
-### Connecting
+### Connectiions
 Quite simply power the devices as described in the components. I've used the 3.3v successfully but also the Vin. (5V). The data imput can be connected to where you configure the ESP. In this case:
 * RX - D2
 * TX - D3
+![pic](esp8266_trans_receiv2.jpg)
+  
 ### MQTT
 ...on going
 
