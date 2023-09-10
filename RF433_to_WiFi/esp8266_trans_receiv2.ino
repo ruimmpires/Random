@@ -40,19 +40,15 @@ all 5 bits 00000
 tristate info
 https://sui77.wordpress.com/2011/04/12/163/
 
-botao ewelink  14557224 / 24bit Protocol: 1   abrir portao rua
-11-01-11-10-00-10-00-00-00-10-1000
 
 
 Comando COATI
 21 / 24bit Protocol: 1
 16404 / 24bit Protocol: 1
-61653 / 24bit Protocol: 1    4117   28885        abrir portao rua
+61653 / 24bit Protocol: 1 
 20501 / 24bit Protocol: 1
 20500 / 24bit Protocol: 1
 
-
-vizinho 16777215 / 24bit Protocol: 6
 
 
 */
@@ -66,7 +62,7 @@ RCSwitch mySwitch = RCSwitch();
 
 // Update these with values suitable for your network.
 const char* ssid = "MEO";
-const char* password = "g0mesp1res";
+const char* password = "...";
 const char* mqtt_server = "192.168.1.201";
 #define mqtt_port 1883
 #define MQTT_USER ""
@@ -240,21 +236,4 @@ void loop() {
     transmit_433(code_to_be_relayed);
     code_to_be_relayed = 0;
   }
-  //delay(100);            // Wait a bit
-  
-  /*for (int codetx = 0; codetx <= 16777215 ; codetx++) {
-    transmit_433(codetx);
-    delay(100);            // Wait a bit
-    digitalWrite(2, HIGH);  // Turn the LED off by making the voltage HIGH
-  }*/
-  /*if(millis() >= time_now + period){
-        time_now += period;
-        //receive_433();
-        i++;
-        if (i>TimeOut){
-          code1 = 1234;
-          transmit_433(code1);
-          i=0;
-        }
-    }*/
 }
