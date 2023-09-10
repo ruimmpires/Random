@@ -145,3 +145,7 @@ Loop:
       - ```mySwitch.send(code, 24);```
       - prints to the serial port the sent code
       - turns on the internal led
+###MQTT DASH APP in Android
+In the android app, MQTT dash, or other compatible, add the broker IP, and configure a dashboard with the publish and subscribe topics such as in the picture
+
+![pic](mqtt_dash.png)
