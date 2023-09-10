@@ -19,4 +19,4 @@ Sources and ideas:
 
 ## VERSION 1 
 * Objective:
-* Connected devices:
+* Connected devices: mmm
