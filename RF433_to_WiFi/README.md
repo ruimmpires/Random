@@ -33,5 +33,6 @@ Quite simply power the devices as described in the components. I've used the 3.3
 
 
 ## VERSION 1 
-* Objective:
-* Connected devices: mmm
+* [esp8266_trans_receiv1.ino](esp8266_trans_receiv1.ino)
+* * Objective: PoC of sending and receiving RF433 codes
+* Details
