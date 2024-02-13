@@ -30,7 +30,7 @@ A 433MHz wave has a wavelength of about 69cm. This is calculated from wavelenght
 ### Arduino HW devices
 I've used an ESP8266.
 ### Connectiions
-Quite simply power the devices as described in the components. I've used the 3.3v successfully but also the Vin. (5V). The data imput can be connected to where you configure the ESP. In this case:
+Quite simply power the devices as described in the components. I've used the 3.3v successfully but also the Vin. (5V). The data input can be connected to where you configure the ESP. In this case:
 * RX - D2
 * TX - D3
 ![pic](esp8266_trans_receiv22.jpg)
@@ -145,6 +145,17 @@ Loop:
       - ```mySwitch.send(code, 24);```
       - prints to the serial port the sent code
       - turns on the internal led
+
+###Troubleshooting
+```
+mosquitto_sub -v -h 192.168.1.201 -t 'home/rf433_1'
+home/rf433_1 16729428
+home/rf433_1 16733268
+home/rf433_1 16733460
+home/rf433_1 0
+home/rf433_1 14557224
+```
+
 ###MQTT DASH APP in Android
 In the android app, MQTT dash, or other compatible, add the broker IP, and configure a dashboard with the publish and subscribe topics such as in the picture, in the bootom righ corner:
 
