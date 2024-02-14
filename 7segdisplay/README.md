@@ -56,7 +56,7 @@ Some pictures of this simple setup:
 
 **Testing code:**
 
-´´´#include <TM1637.h>
+```#include <TM1637.h>
  const int CLK = 5; //Set the CLK pin connection to the display`
 const int DIO = 4; //Set the DIO pin connection to the display`
 int numCounter = 0;`
@@ -73,7 +73,7 @@ tm1637.displayNum(numCounter); //Display the numCounter value;`
 delay(1000);`
 }`
 }
-´´´
+```
 ### Final assembly
 ![](7seg_display_final1.jpg)
 ![](7seg_display_final2.jpg)
