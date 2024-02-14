@@ -30,8 +30,8 @@ The number of connections is also error-prone, but the biggest hurdle is that th
 This is explained here https://randomnerdtutorials.com/esp8266-pinout-reference-gpios/
 
 I later found out that the workaround is to simply place a pull-down resistor: I inserted a resistor in parallel between this pin and the gnd.
-![](https://github.com/ruimmpires/IoTMaker-school/blob/master/IMG_20200122_000813.jpg)
-![](https://github.com/ruimmpires/IoTMaker-school/blob/master/IMG_20200121_235539.jpg)
+![](MG_20200122_000813.jpg)
+![](MG_20200121_235539.jpg)
 
 Another improvement came after looking for a library which is the SevSeg, and a nice example here https://steve.fi/hardware/seven-segment-display/.
 
@@ -51,12 +51,12 @@ I am using ports D1 (GPIO5) for CLK and D2 (CPIO4) for DIO.
 
 For testing purposes, I've created a simple code, however nothing works.
 Some pictures of this simple setup:
-![](https://github.com/ruimmpires/IoTMaker-school/blob/master/IMG_20200124_000332.jpg)
-![](https://github.com/ruimmpires/IoTMaker-school/blob/master/IMG_20200124_000454.jpg)
+![](IMG_20200124_000332.jpg)
+![](IMG_20200124_000454.jpg)
 
 **Testing code:**
 
-'''#include <TM1637.h>
+´´´#include <TM1637.h>
  const int CLK = 5; //Set the CLK pin connection to the display`
 const int DIO = 4; //Set the DIO pin connection to the display`
 int numCounter = 0;`
@@ -73,4 +73,7 @@ tm1637.displayNum(numCounter); //Display the numCounter value;`
 delay(1000);`
 }`
 }
-'''
+´´´
+### Final assembly
+![](7seg_display_final1.jpg)
+![](7seg_display_final2.jpg)
