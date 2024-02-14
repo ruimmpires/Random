@@ -57,21 +57,21 @@ Some pictures of this simple setup:
 **Testing code:**
 
 ```#include <TM1637.h>
- const int CLK = 5; //Set the CLK pin connection to the display`
-const int DIO = 4; //Set the DIO pin connection to the display`
-int numCounter = 0;`
-TM1637 tm1637(CLK,DIO); //set up the 4-Digit Display.`
-void setup()`
-{`
-tm1637.set(0x0a); //set the diplay to maximum brightness`
-}`
-void loop()`
-{`
-for(numCounter = 0; numCounter < 1000; numCounter++) //Iterate numCounter`
-{`
-tm1637.displayNum(numCounter); //Display the numCounter value;`
-delay(1000);`
-}`
+const int CLK = 5; //Set the CLK pin connection to the display
+const int DIO = 4; //Set the DIO pin connection to the display
+int numCounter = 0;
+TM1637 tm1637(CLK,DIO); //set up the 4-Digit Display.
+void setup()
+{
+  tm1637.set(0x0a); //set the diplay to maximum brightness
+}
+void loop()
+{
+  for(numCounter = 0; numCounter < 1000; numCounter++) //Iterate numCounter
+  {
+    tm1637.displayNum(numCounter); //Display the numCounter value;
+    delay(1000);
+  }
 }
 ```
 ### Final assembly
