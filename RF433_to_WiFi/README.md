@@ -86,7 +86,7 @@ Loop:
   - how to read the RF433 commands I currently have?
  
 Bought these antennas https://www.amazon.es/gp/product/B00SO651VU
-![pic](anternnas.png)
+![pic](antennas.png)
 
 ### How does it work:
 Boot:
