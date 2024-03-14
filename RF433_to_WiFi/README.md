@@ -71,6 +71,7 @@ Loop:
 ## VERSION 2 
 ### [esp8266_trans_receiv2.ino](esp8266_trans_receiv2.ino)
 ### Objective: PoC of sending and receiving RF433 codes via MQTT, using a simple MQTT app
+![pic](schematic_v2.png)
 * reads RF433 codes and sends to MQTT broker
 * listens for MQTT published to  and sends the RF433
 * broker is a Raspberry 4 running Mosquitto with exposed default port
@@ -82,8 +83,11 @@ Loop:
   - hardcoded MQTT broker IP
   - keep alive of ESP. How to monitor?
   - resilency of ESP. How to improve?
-  - distance of sending and receiving. The current monopole antennas seem to have a very short reach
   - how to read the RF433 commands I currently have?
+ 
+Bought these antennas https://www.amazon.es/gp/product/B00SO651VU
+![pic](anternnas.png)
+
 ### How does it work:
 Boot:
   - imports RCSwitch.h, a library to manage these RF433 devices
@@ -164,4 +168,7 @@ In the android app, MQTT dash, or other compatible, add the broker IP, and confi
 ![pic](mqtt_dash.png)
 In this dashboard I can see the latest code received and can also send codes. When sending a code previously programmed in my automatic gate, it operated as expected.
 
+Final assembly with the antennas I bought.
 ![final result](rf433_to_wifi_final1.png)
+
+
