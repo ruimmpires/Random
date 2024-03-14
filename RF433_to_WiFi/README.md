@@ -1,6 +1,8 @@
 # RF433 to WiFi
 This project is a prototype to command some home devices via RF433 from the internet.
 
+This project was approved to be in the projecthub **https://projecthub.arduino.cc/ruimmpires/rf433-to-wifi-18820e**
+
 Sources and ideas:
 * ESP32 RMT peripheral with 315 MHz or 433 MHz EV1527, HS1572, PT2240 and similar https://www.espboards.dev/blog/esp32-433-rmt-ev1527/
 * https://github.com/sui77/rc-switch/wiki
