@@ -1,5 +1,9 @@
-# RF433 to WiFi
-This project is a prototype to command some home devices via RF433 from the internet.
+# Outdoor temperature, humidity and water temperature
+
+This project is already explained in several parts in my [github repo](https://github.com/ruimmpires/), but for the sake of organization and having a consolidated end-to-end project, I decided to document here as well.
+
+##Introduction
+The aim is to monitor the outdoor temperature, humidity and the water boiler with a single device.
 
 This project was approved to be in the projecthub **https://projecthub.arduino.cc/ruimmpires/rf433-to-wifi-18820e**
 Latest presentation here https://docs.google.com/presentation/d/1as9tVGGAJT2QDx2BGNHSBEfsLMlyJT_avlybaa4r0MI/edit?usp=sharing
